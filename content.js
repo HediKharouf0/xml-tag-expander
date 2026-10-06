@@ -4,13 +4,17 @@
 //
 // Works in <textarea>, text <input> and contenteditable editors (chat boxes).
 
-// Optional short forms. Anything not listed here expands to itself,
-// so :instruction works without being declared.
-const ALIASES = {
-  ins: "instruction",
-  ex: "example",
-  ctx: "context",
-};
+// Aliases are edited from the popup. Anything not listed expands to itself.
+let ALIASES = DEFAULT_ALIASES;
+
+chrome.storage.sync.get({ aliases: DEFAULT_ALIASES }, (data) => {
+  ALIASES = data.aliases;
+});
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "sync" && changes.aliases) {
+    ALIASES = changes.aliases.newValue || DEFAULT_ALIASES;
+  }
+});
 
 // ":" must not be glued to a previous word, so "12:30" or "http:" never trigger.
 const TRIGGER = /(?<![\w:]):([A-Za-z][\w.-]*)$/;

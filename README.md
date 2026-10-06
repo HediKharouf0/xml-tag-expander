@@ -26,17 +26,7 @@ The colon must not be attached to a previous word, so text like `12:30` or `http
 
 ## Aliases
 
-Short forms are defined at the top of `content.js`:
-
-```js
-const ALIASES = {
-  ins: "instruction",
-  ex: "example",
-  ctx: "context",
-};
-```
-
-Add your own, then click the reload icon on the extension's card in `chrome://extensions` and refresh your tabs.
+Click the extension icon to see your shortcuts, add new ones or remove them. Changes apply right away, no reload needed.
 
 ## Where it works
 
@@ -45,5 +35,7 @@ Add your own, then click the reload icon on the extension's card in `chrome://ex
 
 ## Files
 
-- `manifest.json`: extension manifest (Manifest V3, no special permissions)
+- `manifest.json`: extension manifest (Manifest V3, `storage` permission only)
 - `content.js`: the content script that handles the Tab key
+- `defaults.js`: default shortcuts
+- `popup.html`, `popup.js`, `popup.css`: the shortcuts popup

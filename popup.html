@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XML Tag Expander</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Shortcuts</h1>
+  <p class="hint">Type <code>:alias</code> + Tab to get <code>&lt;tag&gt;&lt;/tag&gt;</code>.</p>
+
+  <table>
+    <thead>
+      <tr><th>Alias</th><th>Tag</th><th></th></tr>
+    </thead>
+    <tbody id="list"></tbody>
+  </table>
+  <p id="empty" class="hint" hidden>No shortcuts yet.</p>
+
+  <form id="add">
+    <input id="alias" placeholder="ins" autocomplete="off" spellcheck="false" required>
+    <span class="arrow">→</span>
+    <input id="tag" placeholder="instruction" autocomplete="off" spellcheck="false" required>
+    <button type="submit">Add</button>
+  </form>
+  <p id="error" class="error" hidden></p>
+
+  <button id="reset" class="link" type="button">Reset to defaults</button>
+
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
